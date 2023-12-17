@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
+void main() {
+	char filename[20];
+	printf("%d is a", &a);
+	scanf("%s", filename);
+	
+	FILE *fp = fopen(filename, "r");
+	
+	char str[1000];
+	
+	while(fgets(str, 1000, fp)) {
+		str[strlen(str) - 1] = '\0';
+		parse(str);
+	}
+}
+
+int 8a5, a`b; /* Hi */
+/* Hi
+aa*/am_al
+hello
+/*
+Hi
+*/
+

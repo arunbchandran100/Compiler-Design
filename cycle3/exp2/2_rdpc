@@ -1,0 +1,140 @@
+#include<stdio.h>
+#include<string.h>
+char input[20];
+int i=0;
+int len=0;
+int E(),Edash(),T(),Tdash(),F();
+int F()
+{
+	int x;
+	if(input[i]=='(')
+	{
+		i++;
+		x=E();
+		if(x==1)
+		{
+			if(input[i]==')')
+			{
+				i++;
+				return 1;
+			}
+			else
+				return 0;
+		}
+		else
+			return 0;
+	}
+	else if(input[i]=='i' && input[i+1]=='d' )
+	{
+		i=i+2;
+		return 1;
+	}
+	else
+		return 0;
+}
+int Tdash()
+{
+	int x;
+	int y;
+	if(input[i]=='*')
+	{
+		i++;
+		x=F();
+		if(x==1)
+		{
+			y=Tdash();
+			if(y==1)
+				return 1;
+			else
+				return 0;
+		}
+		else
+			return 0;
+	}
+	else
+	{return 1;}
+}							
+int Edash()
+{
+	int x,y;
+	if(input[i]=='+')
+	{
+		i++;
+		x=T();
+		if(x==1)
+		{
+			y=Edash();
+			if(y==1)
+			{
+				return 1;
+			}
+			else
+				return 0;
+		}
+		else
+			return 0;
+	}
+	else
+	{
+		return 1;
+	}
+}															
+int T()
+{
+	int x=F();
+	int y;
+	if(x==1)
+	{
+		y=Tdash();
+		if(y==1)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	else
+	{
+		return 0;
+	}
+}	
+int E()
+{
+	int x=T();
+	int y;
+	if(x==1)
+	{
+		y=Edash();
+		if(y==1)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}	
+	}
+	else
+	{
+		return 0;
+	}
+}			
+int main()
+{
+
+	printf("Enter the string:\n");
+	scanf("%s",input);
+	len=strlen(input);
+	int x=E();
+	if(x==1 && i==len)
+	{
+		printf("%s accepted\n",input);
+	}
+	else
+	{
+		printf("%s not accepted\n",input);
+	}
+	return 0;
+}
