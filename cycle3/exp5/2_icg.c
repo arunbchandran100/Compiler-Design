@@ -37,7 +37,7 @@ char* infixToPostfix(char* infix)
 {
 	int i, j;
 	int len = strlen(infix);
-	char* postfix = (char*)malloc(sizeof(char) * (len));
+	char* postfix = malloc(len);
 	char stack[100];
 	int top = -1;
 
